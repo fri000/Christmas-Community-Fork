@@ -37,6 +37,9 @@ const config = {
     process.env.OIDC_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET || null,
   oidcProviderName: process.env.OIDC_PROVIDER_NAME || 'Google',
   oidcEnabled: false,
+  // Enable passwordless login buttons on the login page by default for development/testing.
+  // Set PASSWORDLESS_LOGIN='false' in env to disable in production.
+  passwordlessLogin: process.env.PASSWORDLESS_LOGIN !== 'false',
   pfpUploadMaxSize: process.env.UPLOAD_PFP_MAX_SIZE || 5,
   rootUrl: appendSlash(process.env.ROOT_URL ?? process.env.ROOT_PATH ?? '/'),
   base: '', // automatically set below

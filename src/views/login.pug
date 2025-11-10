@@ -1,7 +1,19 @@
 extends layout.pug
 
 block content
-  form(method='POST')
+  if usernames && usernames.length
+    // add vertical spacing around the usernames box
+    strong #{"Continue as"}:
+    .buttons
+      each name in usernames
+        // each form is inline-block so buttons wrap and have spacing
+        form(method='POST', action='/login/as', style='display:inline-block;margin:0.5rem')
+          input(type='hidden', name='username', value=name)
+          button.button.is-primary(type='submit')= name
+
+  // Render normal username/password form only when passwordless login is disabled
+  if !passwordlessLogin
+    form(method='POST')
     .field
       label.label= lang('LOGIN_USERNAME')
       .control.has-icons-left
@@ -25,3 +37,5 @@ block content
         |&nbsp;&nbsp;#{lang('LOGIN_OIDC_BUTTON')}
   if _CC.config.customHtml.login
     div!= _CC.config.customHtml.login
+
+

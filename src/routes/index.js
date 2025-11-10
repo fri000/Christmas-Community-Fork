@@ -52,7 +52,7 @@ export default ({ db, config }) => {
     Setup({ db, ensurePfp: (username) => ensurePfp(db, config, username) }),
   )
 
-  router.use('/login', Login({ config }))
+  router.use('/login', Login({ db, config }))
   router.use('/logout', Logout())
   router.use('/resetpw', ResetPw(db))
   router.use('/confirm-account', ConfirmAccount(db))
