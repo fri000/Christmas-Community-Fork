@@ -81,6 +81,16 @@ ul.noStyle li {
   }
 }
 
+/* Make the Added By column a bit wider on larger screens so short names fit on one line */
+@media screen and (min-width: 769px) {
+  th.added-by {
+    width: 10%;
+  }
+  td.added-by {
+    white-space: nowrap;
+  }
+}
+
 .ugc {
   white-space: pre-wrap;
   word-break: break-word;

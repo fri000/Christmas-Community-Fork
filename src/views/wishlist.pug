@@ -50,7 +50,7 @@ block content
             |&nbsp; 
             span#price-arrow
           th= lang('WISHLIST_EDIT_ITEM')
-          th= lang('WISHLIST_ADDED_BY')
+          th.added-by= lang('WISHLIST_ADDED_BY')
           if req.params.user === req.user._id
             th= lang('WISHLIST_MOVE_TOP')
             th= lang('WISHLIST_MOVE_UP')
@@ -106,9 +106,9 @@ block content
                         span.icon
                           i.far.fa-edit
               if item.addedBy === '_CCUNKNOWN'
-                td.ugc(data-label=lang('WISHLIST_ADDED_BY'))= lang('WISHLIST_ADDED_BY_GUEST')
+                td.ugc.added-by(data-label=lang('WISHLIST_ADDED_BY'))= lang('WISHLIST_ADDED_BY_GUEST')
               else 
-                td.ugc(data-label=lang('WISHLIST_ADDED_BY'))= item.addedBy
+                td.ugc.added-by(data-label=lang('WISHLIST_ADDED_BY'))= item.addedBy
               if req.params.user === req.user._id
                 td(data-label=lang('WISHLIST_MOVE_ITEM_TOP'))
                   form.topForm.inline(method='POST', action=`${_CC.config.base}wishlist/${req.params.user}/move/top/${item.id}`)
